@@ -1,6 +1,6 @@
 # 🎯 Resume & JD Matcher
 
-An AI-powered Retrieval-Augmented Generation (RAG) tool that matches candidate resumes to job descriptions and generates detailed gap analysis reports — built with Python, ChromaDB, Sentence Transformers, and Claude.
+An AI-powered Retrieval-Augmented Generation (RAG) tool that matches candidate resumes to job descriptions and generates detailed gap analysis reports — built with Python, ChromaDB, Sentence Transformers, and Google Gemini.
 
 ---
 
@@ -8,9 +8,10 @@ An AI-powered Retrieval-Augmented Generation (RAG) tool that matches candidate r
 
 - **Multi-resume upload** — supports PDF and DOCX formats
 - **Vector similarity matching** — uses semantic embeddings to find the best-fit candidates, not just keyword matching
-- **AI gap analysis** — Claude generates structured reports with strengths, gaps, fit scores, and actionable suggestions
+- **AI gap analysis** — Gemini generates structured reports with strengths, gaps, fit scores, and actionable suggestions
 - **Interactive UI** — clean Streamlit interface, no frontend experience needed
 - **Fully local embeddings** — no cost for the embedding step, runs on your machine
+- **Completely free** — uses Google Gemini API (free tier, no credit card needed)
 
 ---
 
@@ -22,7 +23,7 @@ An AI-powered Retrieval-Augmented Generation (RAG) tool that matches candidate r
 | Document Parsing | PyMuPDF (PDF), python-docx (DOCX) |
 | Embeddings | sentence-transformers (`all-MiniLM-L6-v2`) |
 | Vector Database | ChromaDB |
-| LLM / Analysis | Anthropic Claude (`claude-opus-4-5`) |
+| LLM / Analysis | Google Gemini (`gemini-1.5-flash`) |
 
 ---
 
@@ -36,7 +37,7 @@ resume_jd_matcher/
 │   ├── __init__.py
 │   ├── parser.py           # PDF & DOCX text extraction + chunking
 │   ├── embedder.py         # Embedding + ChromaDB vector store
-│   └── analyzer.py         # Claude-powered gap analysis
+│   └── analyzer.py         # Gemini-powered gap analysis
 └── data/
     ├── resumes/            # (optional) store sample resumes here
     └── jds/                # (optional) store sample JDs here
@@ -48,7 +49,7 @@ resume_jd_matcher/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/resume-jd-matcher.git
+git clone https://github.com/fathima-s-13/resume-jd-matcher.git
 cd resume-jd-matcher
 ```
 
@@ -64,10 +65,11 @@ venv\Scripts\activate           # Windows
 pip install -r requirements.txt
 ```
 
-### 4. Get your Anthropic API key
-- Sign up at [console.anthropic.com](https://console.anthropic.com)
-- Create an API key
-- Add a small amount of credit (a few dollars is more than enough)
+### 4. Get your free Gemini API key
+- Go to [aistudio.google.com](https://aistudio.google.com)
+- Sign in with your Google account
+- Click **"Get API Key"** → **"Create API Key"**
+- Copy and save your key
 
 ### 5. Run the app
 ```bash
@@ -80,7 +82,7 @@ The app will open in your browser at `http://localhost:8501`
 
 ## 🧑‍💻 How to Use
 
-1. **Enter your Anthropic API key** in the sidebar
+1. **Enter your Gemini API key** in the sidebar
 2. **Upload resumes** (PDF or DOCX) — you can upload multiple at once
 3. **Paste or upload a Job Description**
 4. **Choose how many top matches** you want to see
@@ -116,7 +118,7 @@ Resumes (PDF/DOCX)
   Top-K Matching Resumes (by cosine similarity)
        │
        ▼
-  Claude API (Gap Analysis prompt + resume + JD)
+  Gemini API (Gap Analysis prompt + resume + JD)
        │
        ▼
   Structured JSON Report (strengths, gaps, suggestions)
@@ -148,9 +150,9 @@ Recommendation:     Strong Fit
 - Contribute to open-source to demonstrate CI/CD usage
 
 📝 Summary
-John is a strong backend developer whose Python and 
-containerization skills closely match the role. The 
-primary gaps are cloud infrastructure and CI/CD, which 
+John is a strong backend developer whose Python and
+containerization skills closely match the role. The
+primary gaps are cloud infrastructure and CI/CD, which
 could be addressed with targeted upskilling.
 ```
 
@@ -187,4 +189,4 @@ MIT License — free to use, modify, and distribute.
 
 ---
 
-*Built with ❤️ using Python, ChromaDB, Sentence Transformers, and Anthropic Claude*
+*Built with ❤️ using Python, ChromaDB, Sentence Transformers, and Google Gemini*
