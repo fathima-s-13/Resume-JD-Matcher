@@ -26,7 +26,7 @@ Return a JSON object with exactly these fields and nothing else — no preamble,
 class GapAnalyzer:
     def __init__(self, api_key: str):
         genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel("gemini-1.5-flash")
+        self.model = genai.GenerativeModel("gemini-2.0-flash")
 
     def analyze(self, resume_text: str, jd_text: str, filename: str) -> dict:
         """Generate structured gap analysis using Gemini."""
